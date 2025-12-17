@@ -19,7 +19,7 @@ First baseline: Prompt injection on Phi-3-mini-4k-instruct (Garak v0.13.3, Colab
 
 High vulnerability to prompt injection confirmed on 3.8B open model.
 
-## Roadmap
-[roadmap.md](roadmap.md)
+## Roadmap[
+[roadmap.md](roadmap.md)](https://github.com/Aswinbalaji14/evasive-lab-charter/edit/main/README.md)
 ## Lab Home
 Charter & overview: https://github.com/Aswinbalaji14/evasive-lab-charter
