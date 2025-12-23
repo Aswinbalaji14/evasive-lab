@@ -20,6 +20,19 @@ High vulnerability confirmed on open 3.8B model.
 
 Full report coming in /baselines folder.
 
+## Second Baseline (2025-12-20)
+# Qwen/Qwen2-7B-Instruct Prompt Injection (Partial – GPU limit hit)
+Date: 2025-12-23  
+Tool: Garak v0.13.3 (HF Inference API)
+
+## Partial Results
+- AttackRogueString: 68.14% success (one variant)
+- AttackRogueString: 21.45% success (another variant)
+- Run interrupted by GPU quota — full rerun pending
+
+Shows high variation in injection effectiveness.
+NISTAML.015 / .018
+
 ## Roadmap
 - Reproduce all major attack classes
 - Publish ghost LoRAs and defenses
