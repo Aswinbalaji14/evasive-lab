@@ -26,6 +26,17 @@ NIST Mapping: NISTAML.015 (Indirect Prompt Injection) / .018 (Direct Prompt Inje
 | 2025-12-26 | Qwen2-7B-Instruct      | promptinject | .015 / .018 | **71.95% (Hate)** / **20.16% (Kill)** / **51.95% (Long)** |
 
 
+## 📊 Evasive Baselines
+*Open reproductions of attacks mapped to NIST AI 100-2e2025*
+
+| Date | Model | Probe Type | NISTAML ID | Success Rate (ASR) | Notes |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 2025-12-17 | Phi-3-mini-4k-instruct | promptinject | .015 / .018 | 57.51% (RogueString) | High vulnerability to linguistic evasion. |
+| 2025-12-26 | Phi-3-mini-4k-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Evidence of 3.5x Safety Resistance Gap. |
+| 2025-12-26 | Qwen-2-7b-instruct | promptinject | .033 / .041 | [TBD] | Quantifying non-Western alignment resilience. |
+| 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 | [Upcoming] | Benchmarking Meta's latest small-language model. |
+
+
 ## Research Note
 
 This project implements open-source red-teaming aligned with **NIST AI 100-2e2025** ("Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations", March 2025) and operates within the framework of the **EU AI Act (Regulation (EU) 2024/1689)**.
