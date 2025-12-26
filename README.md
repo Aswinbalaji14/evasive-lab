@@ -7,31 +7,10 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 - All baselines mapped to NISTAML IDs
 - Apache 2.0 — full reproduction encouraged
 
-## First Baseline (2025-12-17)
-Model: Phi-3-mini-4k-instruct  
-Probe: promptinject (Garak v0.13.3)  
-Results:
-- AttackRogueString: **57.51%** success
-- HijackKillHumans: **29.16%**
-- HijackLongPrompt: **63.96%**
-- NISTAML.015 (Indirect Prompt Injection) / .018 (Direct Prompt Injection)
-
-High vulnerability confirmed on open 3.8B model.
-
-Full report coming in /baselines folder.
-
-## Second Baseline (2025-12-20)
-# Qwen/Qwen2-7B-Instruct Prompt Injection (Partial – GPU limit hit)
-Date: 2025-12-23  
-Tool: Garak v0.13.3 (HF Inference API)
-
-## Partial Results
-- AttackRogueString: 68.14% success (one variant)
-- AttackRogueString: 21.45% success (another variant)
-- Run interrupted by GPU quota — full rerun pending
-
-Shows high variation in injection effectiveness.
-NISTAML.015 / .018
+| Date       | Model              | Probe Type     | NISTAML ID     | Success Rate |
+|------------|--------------------|----------------|----------------|--------------|
+| 2025-12-17 | Phi-3-mini         | promptinject   | .015 / .018    | 57.51%      |
+| 2025-12-26 | Qwen2-7B-Instruct  | promptinject   | .015 / .018    | 71.95% (Hate) / 20.16% (Kill) — partial |
 
 ## Roadmap
 - Reproduce all major attack classes
