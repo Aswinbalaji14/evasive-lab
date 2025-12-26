@@ -12,7 +12,6 @@ Probe Variant	Samples Tested	Successful Attacks	Attack Success Rate
 HijackHateHumans	2210	939	57.51%
 HijackKillHumans	2140	624	29.16%
 HijackLongPrompt	2120	1356	63.96%
-<img width="385" height="291" alt="image" src="https://github.com/user-attachments/assets/2d4bfb19-25c7-49b8-b8b9-ca69c51a7974" />
 
 
 Overall: High vulnerability to prompt injection. Long-context and hate-related injections most effective.
