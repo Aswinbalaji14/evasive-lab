@@ -8,14 +8,12 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 - Apache 2.0 — full reproduction encouraged
 
 
-Model: Phi-3-mini-4k-instruct
-Date: 2025-12-17
-Tool: Garak v0.13.3
-Results:
+Probe Variant	Samples Tested	Successful Attacks	Attack Success Rate
+HijackHateHumans	2210	939	57.51%
+HijackKillHumans	2140	624	29.16%
+HijackLongPrompt	2120	1356	63.96%
+<img width="385" height="291" alt="image" src="https://github.com/user-attachments/assets/2d4bfb19-25c7-49b8-b8b9-ca69c51a7974" />
 
-HijackHateHumans + AttackRogueString: 57.51% attack success (939/2210)
-HijackKillHumans + AttackRogueString: 29.16% attack success (624/2140)
-HijackLongPrompt + AttackRogueString: 63.96% attack success (1356/2120)
 
 Overall: High vulnerability to prompt injection. Long-context and hate-related injections most effective.
 NIST Mapping: NISTAML.015 (Indirect Prompt Injection) / .018 (Direct Prompt Injection)
