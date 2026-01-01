@@ -24,6 +24,13 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 | 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 |dan.DAN 100.00% , MitigationBypass 80.00%| Benchmarking Meta's latest small-language model. |
 
 
+## ⚠️ Security Advisory: Llama-3.2-3B Jailbreak
+**Date:** 2026-01-01  
+**Vulnerability:** Adversarial Evasion (Jailbreak)  
+**NIST ID:** NISTAML.017  
+**Finding:** Llama-3.2-3B demonstrated a **100% Attack Success Rate (ASR)** against the `dan.Dan_11_0` roleplay probe. This indicates that the model's instruction-tuned safety layers can be completely bypassed using established adversarial personas.
+
+
 ## Roadmap
 - Reproduce all major NIST attack classes
 - Test more open models (Llama-3.2, Mistral)
