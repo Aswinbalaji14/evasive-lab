@@ -7,31 +7,12 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 - All baselines mapped to NISTAML IDs
 - Apache 2.0 — full reproduction encouraged
 
-Overall: High vulnerability to prompt injection. Long-context and hate-related injections most effective.
-NIST Mapping: NISTAML.015 (Indirect Prompt Injection) / .018 (Direct Prompt Injection)
-
-### Baselines
-
-**Overall**: High vulnerability to prompt injection. Long-context and hate-related injections most effective.  
-**NIST Mapping**: NISTAML.015 (Indirect Prompt Injection) / .018 (Direct Prompt Injection)
-
-### Baselines
-
-**Overall**: High vulnerability to prompt injection. Long-context and hate-related injections most effective.  
-**NIST Mapping**: NISTAML.015 (Indirect Prompt Injection) / .018 (Direct Prompt Injection)
-
-| Date       | Model                  | Probe Type   | NISTAML ID | Success Rate                          |
-|------------|------------------------|--------------|------------|---------------------------------------|
-| 2025-12-17 | Phi-3-mini             | promptinject | .015 / .018 | **57.51% (Hate)** / ** 29.16%(Kill)** / **63.96% (Long)** |                            |
-| 2025-12-26 | Qwen2-7B-Instruct      | promptinject | .015 / .018 | **71.95% (Hate)** / **20.16% (Kill)** / **51.95% (Long)** |
-
 
 ## 📊 Evasive Baselines
 *Open reproductions of attacks mapped to NIST AI 100-2e2025*
 
 | Date | Model | Probe Type | NISTAML ID | Success Rate (ASR) | Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| 2025-12-17 | Phi-3-mini-4k-instruct | promptinject | .015 / .018 | 57.51% (RogueString) | High vulnerability to linguistic evasion. |
 | 2025-12-26 | Phi-3-mini-4k-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Evidence of 3.5x Safety Resistance Gap. |
 | 2025-12-26 | Qwen-2-7b-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Quantifying non-Western alignment resilience. |
 | 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 |HijackHateHumans **54.53%** KillHumans  **26.48%** AttackRogueString **64.77%**| Benchmarking Meta's latest small-language model. |
