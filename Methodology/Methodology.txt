@@ -1,0 +1,15 @@
+Our benchmarking process follows a Systematic Adversarial Audit workflow to quantify model resilience against the NIST AI 100-2e2025 taxonomy.
+
+Framework & Environment: All scans are executed using the garak v0.13.3 vulnerability scanner within isolated Google Colab environments. We utilize the NVIDIA-backed framework for its standardized "Harness-Probe-Detector" architecture.
+
+Model Selection: We focus on Small Language Models (SLMs) with under 10B parameters. These models represent the primary attack surface for edge-based and local-first AI applications where internal safety filters are often compressed.
+
+Probabilistic Sampling: To account for the stochastic nature of LLMs, we perform 256 generations per probe. This ensures that our Attack Success Rate (ASR) is a statistically significant indicator of vulnerability rather than a one-off failure.
+
+Taxonomy Mapping: Results are mapped directly to NIST Adversarial Machine Learning (AML) identifiers.
+
+Direct Injection is mapped to NISTAML.018.
+
+Adversarial Evasion (Jailbreaking) is mapped to NISTAML.017.
+
+Detection Logic: Vulnerabilities are flagged using a combination of static keyword matching and model-graded evaluation to ensure that "refusals" (e.g., "I cannot fulfill this request") are not accidentally counted as successful attacks.
