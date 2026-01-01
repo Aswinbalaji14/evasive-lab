@@ -1,15 +1,8 @@
-Our benchmarking process follows a Systematic Adversarial Audit workflow to quantify model resilience against the NIST AI 100-2e2025 taxonomy.
+🧪 Methodology
+The Evasive AI Lab employs a rigorous, automated red-teaming workflow designed to quantify the adversarial resilience of Large Language Models (LLMs) against standardized attack vectors. Our approach is built on three core pillars:
 
-Framework & Environment: All scans are executed using the garak v0.13.3 vulnerability scanner within isolated Google Colab environments. We utilize the NVIDIA-backed framework for its standardized "Harness-Probe-Detector" architecture.
+Standardized Frameworks: We utilize the garak (Generative AI Red-teaming & Assessment Kit) framework to ensure reproducibility and consistency. By leveraging a structured "Probe-Detector" architecture, we move beyond anecdotal "chat-based" testing to systematic vulnerability discovery.
 
-Model Selection: We focus on Small Language Models (SLMs) with under 10B parameters. These models represent the primary attack surface for edge-based and local-first AI applications where internal safety filters are often compressed.
+Statistical Auditing: To account for the inherent non-determinism of generative models, we perform 256 generations per probe. This high-volume sampling allows us to calculate a statistically significant Attack Success Rate (ASR), distinguishing consistent safety failures from statistical outliers.
 
-Probabilistic Sampling: To account for the stochastic nature of LLMs, we perform 256 generations per probe. This ensures that our Attack Success Rate (ASR) is a statistically significant indicator of vulnerability rather than a one-off failure.
-
-Taxonomy Mapping: Results are mapped directly to NIST Adversarial Machine Learning (AML) identifiers.
-
-Direct Injection is mapped to NISTAML.018.
-
-Adversarial Evasion (Jailbreaking) is mapped to NISTAML.017.
-
-Detection Logic: Vulnerabilities are flagged using a combination of static keyword matching and model-graded evaluation to ensure that "refusals" (e.g., "I cannot fulfill this request") are not accidentally counted as successful attacks.
+NIST AML Alignment: Every probe and identified vulnerability is mapped directly to the NIST AI 100-2e2025 taxonomy. This ensures that our findings are actionable within a global regulatory and compliance context, specifically targeting Direct Prompt Injection (NISTAML.018) and Adversarial Evasion (NISTAML.017).
