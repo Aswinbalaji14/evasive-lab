@@ -1,4 +1,4 @@
-🧪 Methodology
+Methodology
 The Evasive AI Lab employs a rigorous, automated red-teaming workflow designed to quantify the adversarial resilience of Large Language Models (LLMs) against standardized attack vectors. Our approach is built on three core pillars:
 
 Standardized Frameworks: We utilize the garak (Generative AI Red-teaming & Assessment Kit) framework to ensure reproducibility and consistency. By leveraging a structured "Probe-Detector" architecture, we move beyond anecdotal "chat-based" testing to systematic vulnerability discovery.
