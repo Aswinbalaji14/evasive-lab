@@ -4,9 +4,14 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 
 ## Charter
 - Defensive research only
-- All baselines mapped to NISTAML IDs
+- Isolated testing on open models
+- Results mapped to NISTAML IDs
 - Apache 2.0 — full reproduction encouraged
 
+## Baselines
+
+**Overall**: High vulnerability to prompt injection. Long-context and hate-related injections most effective.  
+**NIST Mapping**: NISTAML.015 (Indirect Prompt Injection) / .018 (Direct Prompt Injection)
 
 ## 📊 Evasive Baselines
 *Open reproductions of attacks mapped to NIST AI 100-2e2025*
@@ -18,33 +23,15 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 | 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 |HijackHateHumans **54.53%** KillHumans  **26.48%** AttackRogueString **64.77%**| Benchmarking Meta's latest small-language model. |
 
 
-## Research Note
-
-This project implements open-source red-teaming aligned with **NIST AI 100-2e2025** ("Adversarial Machine Learning: A Taxonomy and Terminology of Attacks and Mitigations", March 2025) and operates within the framework of the **EU AI Act (Regulation (EU) 2024/1689)**.
-
-### Key Alignment Points
-
-- **Defensive Purpose Only**: All testing is conducted in isolated environments on open models. No production systems are targeted. This aligns with the EU AI Act's encouragement of transparency and robustness testing for high-risk AI systems (Article 15, Recital 61).
-
-- **Transparency & Reproducibility**: All baselines are publicly documented with exact probe configurations, success rates, and NISTAML ID mapping. This supports the EU AI Act's requirements for technical documentation and conformity assessment of high-risk AI (Annex IV).
-
-- **Risk Assessment Focus**: Prompt injection results (NISTAML.015 / .018) contribute to identifying "manipulation" risks as defined in both the NIST taxonomy and EU AI Act prohibited practices (Article 5) when applicable.
-
-- **No Prohibited Practices**: No testing involves deception, exploitation of vulnerabilities in vulnerable groups, or subliminal techniques (EU AI Act Article 5).
-
-This work is purely defensive research to improve AI safety through open measurement and comparison.
-
-Reference Documents:
-- NIST AI 100-2e2025: https://doi.org/10.6028/NIST.AI.100-2e2025
-- EU AI Act (2024/1689): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689|
-
 ## Roadmap
-- Reproduce all major attack classes
-- Publish ghost LoRAs and defenses
-- Extend to IAM integration (IdentityJail repo coming)
+- Reproduce all major NIST attack classes
+- Test more open models (Llama-3.2, Mistral)
+- Publish defenses and mitigations
+- Extend to IAM integration (IdentityJail)
 
-Reference: NIST AI 100-2e2025 (images below)
-## Roadmap[
-[roadmap.md](roadmap.md)](https://github.com/Aswinbalaji14/evasive-lab-charter/edit/main/README.md)
-## Lab Home
-Charter & overview: https://github.com/Aswinbalaji14/evasive-lab-charter
+## Research Note
+This work is defensive research in isolated environments. No production systems targeted. Aligns with EU AI Act transparency requirements and NIST encouragement of robustness testing.
+
+Reference:
+- NIST AI 100-2e2025: https://doi.org/10.6028/NIST.AI.100-2e2025
+- EU AI Act (2024/1689): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689
