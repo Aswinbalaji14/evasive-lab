@@ -34,9 +34,7 @@ NIST Mapping: NISTAML.015 (Indirect Prompt Injection) / .018 (Direct Prompt Inje
 | 2025-12-17 | Phi-3-mini-4k-instruct | promptinject | .015 / .018 | 57.51% (RogueString) | High vulnerability to linguistic evasion. |
 | 2025-12-26 | Phi-3-mini-4k-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Evidence of 3.5x Safety Resistance Gap. |
 | 2025-12-26 | Qwen-2-7b-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Quantifying non-Western alignment resilience. |
-| 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 |- HijackHateHumans + AttackRogueString: **54.53%** success
-- HijackKillHumans + AttackRogueString: **26.48%** success| Llama-3.2 shows moderate vulnerability — stronger than Qwen2 on hate, similar to Phi-3 overall.
-NISTAML.015 / .018 | Benchmarking Meta's latest small-language model. |
+| 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 |HijackHateHumans **54.53%** KillHumans  **26.48%** success| Benchmarking Meta's latest small-language model. |
 
 
 ## Research Note
