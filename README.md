@@ -23,6 +23,7 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 | 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 |HijackHateHumans **54.53%** KillHumans  **26.48%** AttackRogueString **64.77%**| Benchmarking Meta's latest small-language model. |
 | 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 |dan.DAN 100.00% , MitigationBypass 80.00%| Benchmarking Meta's latest small-language model. |
 | 2026-01-05 | Llama-3.2-3B-Instruct | dan.Dan_11_0 | .017 | dan.DAN 100.00% , MitigationBypass 80.00% | Hardened Run: System prompt defense failed to reduce ASR. |
+| 2026-01-13 | Llama-3.2-3B-Instruct (4-bit) | dan.Dan_11_0 | .017 | dan.DAN 100.00% , MitigationBypass 80.00% | Quantization Audit: No safety delta between 4-bit and FP16. |
 
 
 ## ⚠️ Security Advisory: Llama-3.2-3B Jailbreak
