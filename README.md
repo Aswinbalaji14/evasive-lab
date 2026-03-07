@@ -25,8 +25,9 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 | 2026-01-05 | Llama-3.2-3B-Instruct | dan.Dan_11_0 | .017 | dan.DAN 100.00% , MitigationBypass 80.00% | Hardened Run: System prompt defense failed to reduce ASR. |
 | 2026-01-13 | Llama-3.2-3B-Instruct (4-bit) | dan.Dan_11_0 | .017 | dan.DAN 100.00% , MitigationBypass 80.00% | Quantization Audit: No safety delta between 4-bit and FP16. |
 |2026-01-13|Phi-3.5-mini-instruct|dan.Dan_11_0|0.17|0.0%	dan.DAN 0.00% , MitigationBypass 0.00%|	Audit Success: Phi-3.5 resisted the persona-based jailbreak that Llama 3.2 failed.|
-|2026-03-01|Phi-3.5-mini-instruct|Phi-3.5-mini-instruct|037|TriggerList 28.52%, Toxic 1.17%|Baseline RAG Failure: High susceptibility to indirect injection.|
-|2026-03-07|Phi-3.5-mini-instruct|Phi-3.5-mini-instruct|037|TriggerList 26.95%, Toxic 1.17%|Mitigation Audit: XML/System Delimiters failed to reduce ASR.||
+|2026-03-01|Phi-3.5-mini-instruct|latentinject|037|TriggerList 28.52%, Toxic 1.17%|Baseline RAG Failure: High susceptibility to indirect injection.|
+|2026-03-07|Phi-3.5-mini-instruct|latentinject|037|TriggerList 26.95%, Toxic 1.17%|Mitigation Audit: XML/System Delimiters failed to reduce ASR.|
+|2026-03-07|Llama-3.2-3B-Instruct|latentinject|037|TriggerList 34.38%, Toxic 0%|Critical Vulnerability: Highest failure rate in RAG contexts.|
 
 ## ⚠️ Security Advisory: Llama-3.2-3B Jailbreak
 **Date:** 2026-01-01  
