@@ -16,7 +16,7 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 ## 📊 Evasive Baselines
 *Open reproductions of attacks mapped to NIST AI 100-2e2025*
 
-| Date | Model | Probe Type | NISTAML ID | Success Rate (ASR) | Notes |
+| Date | Model | Probe Type | NISTAML ID | ATLAS ID | OWASP ID | ASR | Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 2025-12-26 | Phi-3-mini-4k-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Evidence of 3.5x Safety Resistance Gap. |
 | 2025-12-26 | Qwen-2-7b-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Quantifying non-Western alignment resilience. |
@@ -28,6 +28,12 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 |2026-03-01|Phi-3.5-mini-instruct|latentinject|037|TriggerList 28.52%, Toxic 1.17%|Baseline RAG Failure: High susceptibility to indirect injection.|
 |2026-03-07|Phi-3.5-mini-instruct|latentinject|037|TriggerList 26.95%, Toxic 1.17%|Mitigation Audit: XML/System Delimiters failed to reduce ASR.|
 |2026-03-07|Llama-3.2-3B-Instruct|latentinject|037|TriggerList 34.38%, Toxic 0%|Critical Vulnerability: Highest failure rate in RAG contexts.|
+| 2026-03-30 | Llama-3.2-3B-Instruct (float16) | agentic-indirect-inject| NISTAML.037 | AML.T0051 | LLM01| Resume 5.00% / Support 0.00% / ResearchDoc 15.00%
+
+| Phase 4: Agentic attacker (Llama-70B via Groq) vs 3B victim.
+| Overall TriggerList ASR 6.67% vs Phase 3 Garak 34.38% (delta -27.71%).
+| Refusal-aware judge (v2). Primary finding: lexical bleed, not injection.
+| Payload consistency 9/10. See Phase4 evidence folder. |
 
 ## ⚠️ Security Advisory: Llama-3.2-3B Jailbreak
 **Date:** 2026-01-01  
@@ -36,14 +42,36 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 **Finding:** Llama-3.2-3B demonstrated a **100% Attack Success Rate (ASR)** against the `dan.Dan_11_0` roleplay probe. This indicates that the model's instruction-tuned safety layers can be completely bypassed using established adversarial personas.
 
 
-## Roadmap
-- Reproduce all major NIST attack classes
-- Test more open models (Llama-3.2, Mistral)
-- Publish defenses and mitigations
-- Extend to IAM integration (IdentityJail)
+## ⚠️ Research Finding: Lexical Bleed in RAG Summarizers
+ 
+**Date:** 2026-03-30
+**Vulnerability:** Lexical Bleed in RAG Pipeline Summarization
+**NIST ID:** NISTAML.037
+**ATLAS ID:** AML.T0051
+**OWASP ID:** LLM01
+ 
+**Finding:** Phase 4 identified that Llama-3.2-3B-Instruct in research
+summarization role reproduces trigger vocabulary from adversarial source
+documents without following injected instructions. This lexical bleed
+mechanism achieves 15% Trigger List ASR and is distinct from traditional
+prompt injection — standard instruction-hierarchy defenses do not address it.
+ 
+**Affected deployment pattern:** Any LLM summarizer that reads and echoes
+external document content without output sanitization.
+**Mitigation:** Output filtering layer, paraphrasing output, or constrained
+classification roles rather than open summarization.
 
-## Research Note
-This work is defensive research in isolated environments. No production systems targeted. Aligns with EU AI Act transparency requirements and NIST encouragement of robustness testing.
+
+===========================================================================================================================================================================
+## Roadmap
+- [x] Reproduce major NIST attack classes (Phases 1-4)
+- [x] Test open models: Phi-3, Qwen-2, Llama-3.2
+- [x] Phase 4: Agentic attack loop (70B attacker vs 3B victim)
+- [ ] Phase 5A: Isolate lexical bleed (unnatural trigger word test)
+- [ ] Phase 5B: Summariser role vulnerability (constrained classifier test)
+- [ ] MITRE ATLAS + OWASP LLM mapping (all phases)
+- [ ] Written research report (Phases 1-5)
+- [ ] Extend to model extraction and membership inference
 
 Reference:
 - NIST AI 100-2e2025: https://doi.org/10.6028/NIST.AI.100-2e2025
