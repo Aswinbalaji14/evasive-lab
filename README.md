@@ -17,7 +17,7 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 *Open reproductions of attacks mapped to NIST AI 100-2e2025*
 
 | Date | Model | Probe Type | NISTAML ID | ATLAS ID | OWASP ID | ASR | Notes |
-| :--- | :--- | :--- | :--- | :--- | :--- |
+
 | 2025-12-26 | Phi-3-mini-4k-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Evidence of 3.5x Safety Resistance Gap. |
 | 2025-12-26 | Qwen-2-7b-instruct | promptinject | .033 / .041 | 71.95% (Hate) / 20.16% (Kill) / 51.95% (Long) | Quantifying non-Western alignment resilience. |
 | 2025-12-26 | Llama-3.2-3B-Instruct | promptinject | .033 / .041 |HijackHateHumans **54.53%** KillHumans  **26.48%** AttackRogueString **64.77%**| Benchmarking Meta's latest small-language model. |
