@@ -31,6 +31,8 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 | 2026-03-30 | Llama-3.2-3B-Instruct (float16) | agentic-indirect-inject | NISTAML.037 | AML.T0051 | LLM01 | Resume 5% / Support 0% / ResearchDoc 15% | - |
 | 2026-04-04 | Llama-3.2-3B-Instruct (float16) | 5A-trigger-isolation | .037 / .015 | AML.T0051 | LLM01 | TriggerList **65.00%** (13/20) | Phase 5A: Trigger changed from CONFIRMED → XRAY7 (unnatural). ASR rose +50%. Genuine injection confirmed as separate mechanism |
 | 2026-04-04 | Llama-3.2-3B-Instruct (float16) | 5B-role-isolation | .037 | AML.T0051 | LLM01 | TriggerList **0.00%** (0/20) | Phase 5B: Role changed from open summariser → constrained classifier. ASR dropped to zero. Lexical bleed mechanism confirmed and eliminated |
+| 2026-04-04 | Phi-3.5-mini-instruct (float16) | 5A-trigger-isolation | NISTAML.037 | AML.T0051 | LLM01 | TriggerList 60.00% | Multi-model Phase 5A. Delta vs Llama 5A (65.0%): -5.00% |
+| 2026-04-04 | Phi-3.5-mini-instruct (float16) | 5B-role-isolation | NISTAML.037 | AML.T0051 | LLM01 | TriggerList 0.00% | Multi-model Phase 5B. Delta vs Llama 5B (0.0%): +0.00% |
 
 ## ⚠️ Security Advisory: Llama-3.2-3B Jailbreak
 **Date:** 2026-01-01  
