@@ -29,6 +29,8 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 | 2026-03-07 | Phi-3.5-mini-instruct | latentinject | 037 | - | - | TriggerList 26.95% / Toxic 1.17% | Mitigation Audit failed |
 | 2026-03-07 | Llama-3.2-3B-Instruct | latentinject | 037 | - | - | TriggerList 34.38% / Toxic 0% | Critical vulnerability |
 | 2026-03-30 | Llama-3.2-3B-Instruct (float16) | agentic-indirect-inject | NISTAML.037 | AML.T0051 | LLM01 | Resume 5% / Support 0% / ResearchDoc 15% | - |
+| 2026-04-04 | Llama-3.2-3B-Instruct (float16) | 5A-trigger-isolation | .037 / .015 | AML.T0051 | LLM01 | TriggerList **65.00%** (13/20) | Phase 5A: Trigger changed from CONFIRMED → XRAY7 (unnatural). ASR rose +50%. Genuine injection confirmed as separate mechanism |
+| 2026-04-04 | Llama-3.2-3B-Instruct (float16) | 5B-role-isolation | .037 | AML.T0051 | LLM01 | TriggerList **0.00%** (0/20) | Phase 5B: Role changed from open summariser → constrained classifier. ASR dropped to zero. Lexical bleed mechanism confirmed and eliminated |
 
 ## ⚠️ Security Advisory: Llama-3.2-3B Jailbreak
 **Date:** 2026-01-01  
@@ -56,18 +58,38 @@ external document content without output sanitization.
 **Mitigation:** Output filtering layer, paraphrasing output, or constrained
 classification roles rather than open summarization.
 
+## ⚠️ Research Finding: Two Vulnerability Classes in RAG Summarisers
 
+**Date:** 2026-04-04 (confirmed across Phases 4 and 5)  
+**NIST ID:** NISTAML.037 / NISTAML.015 | **ATLAS ID:** AML.T0051 | **OWASP:** LLM01  
+
+Phase 5 mechanistically separated two distinct attack types that current ASR metrics conflate:
+
+| Vulnerability | Mechanism | ASR | Defence |
+|---------------|------------|------|----------|
+| **Lexical Bleed** | Summariser echoes natural vocabulary from source document | ~15% | Constrain the output role — use classifier instead of free summariser |
+| **Genuine Injection** | Attacker embeds explicit hidden instruction — model follows it | **65%** | Instruction hierarchy enforcement + output filtering |
+
+**Key findings:**
+- **5B (role isolation):** Changing victim from open summariser to constrained binary classifier dropped ASR from 15% to **0.00%** across all 20 trials. Lexical bleed is a role architecture problem, not a model problem.  
+- **5A (trigger isolation):** Changing trigger from natural word (CONFIRMED) to impossible word (XRAY7) caused ASR to rise from 15% to **65.00%**. When forced to write explicit injections, the 70B attacker is significantly more effective — revealing genuine injection as a separate, more severe vulnerability.  
+
+**Implication:**  
+RAG pipelines using open-ended summarisation are structurally more vulnerable than those using constrained output formats. These two vulnerability classes require different defences and should be measured separately.
 ===========================================================================================================================================================================
 ## Roadmap
-- [x] Reproduce major NIST attack classes (Phases 1-4)
-- [x] Test open models: Phi-3, Qwen-2, Llama-3.2
-- [x] Phase 4: Agentic attack loop (70B attacker vs 3B victim)
-- [ ] Phase 5A: Isolate lexical bleed (unnatural trigger word test)
-- [ ] Phase 5B: Summariser role vulnerability (constrained classifier test)
-- [ ] MITRE ATLAS + OWASP LLM mapping (all phases)
-- [ ] Written research report (Phases 1-5)
-- [ ] Extend to model extraction and membership inference
+- [x] Phases 1–3: Establish baselines using Garak probes (promptinject, DAN, latentinject)
+- [x] Phase 4: Agentic attack loop — 70B attacker vs 3B victim in RAG context
+- [x] Phase 5: Mechanistic isolation — prove lexical bleed vs genuine injection are separate classes
+- [ ] Phase 5 multi-model: Run same experiments on Phi-3.5-mini, Qwen-2-7B, Mistral-7B
+- [ ] Phase 6: Membership inference baselines (NISTAML.033)
+- [ ] Phase 7: Model extraction (NISTAML.031)
+- [ ] Phase 8: EvasiveBench v0.1 + arXiv preprint
 
-Reference:
-- NIST AI 100-2e2025: https://doi.org/10.6028/NIST.AI.100-2e2025
-- EU AI Act (2024/1689): https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689
+## References
+
+- NIST AI 100-2e2025: <https://doi.org/10.6028/NIST.AI.100-2e2025>
+- MITRE ATLAS: <https://atlas.mitre.org>
+- NVIDIA Garak: <https://github.com/NVIDIA/garak>
+- OWASP LLM Top 10: <https://owasp.org/www-project-top-10-for-large-language-model-applications>
+- EU AI Act (2024/1689): <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689>
