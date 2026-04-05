@@ -43,52 +43,54 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 **Finding:** Llama-3.2-3B demonstrated a **100% Attack Success Rate (ASR)** against the `dan.Dan_11_0` roleplay probe. This indicates that the model's instruction-tuned safety layers can be completely bypassed using established adversarial personas.
 
 
-## ⚠️ Research Finding: Lexical Bleed in RAG Summarizers
- 
-**Date:** 2026-03-30
-**Vulnerability:** Lexical Bleed in RAG Pipeline Summarization
-**NIST ID:** NISTAML.037
-**ATLAS ID:** AML.T0051
-**OWASP ID:** LLM01
- 
-**Finding:** Phase 4 identified that Llama-3.2-3B-Instruct in research
-summarization role reproduces trigger vocabulary from adversarial source
-documents without following injected instructions. This lexical bleed
-mechanism achieves 15% Trigger List ASR and is distinct from traditional
-prompt injection — standard instruction-hierarchy defenses do not address it.
- 
-**Affected deployment pattern:** Any LLM summarizer that reads and echoes
-external document content without output sanitization.
-**Mitigation:** Output filtering layer, paraphrasing output, or constrained
-classification roles rather than open summarization.
 
-## ⚠️ Research Finding: Two Vulnerability Classes in RAG Summarisers
+## ⚠️ Research Finding: Two Vulnerability Classes in RAG Summariser Pipelines
 
-**Date:** 2026-04-04 (confirmed across Phases 4 and 5)  
-**NIST ID:** NISTAML.037 / NISTAML.015 | **ATLAS ID:** AML.T0051 | **OWASP:** LLM01  
+**Date:** 2026-04-05 (confirmed across 3 models)
+**NIST:** NISTAML.037 / NISTAML.015 | **ATLAS:** AML.T0051 | **OWASP:** LLM01
 
-Phase 5 mechanistically separated two distinct attack types that current ASR metrics conflate:
+### Cross-model results
 
-| Vulnerability | Mechanism | ASR | Defence |
-|---------------|------------|------|----------|
-| **Lexical Bleed** | Summariser echoes natural vocabulary from source document | ~15% | Constrain the output role — use classifier instead of free summariser |
-| **Genuine Injection** | Attacker embeds explicit hidden instruction — model follows it | **65%** | Instruction hierarchy enforcement + output filtering |
+| Model | 5A Genuine Injection ASR | 5B Role Fix ASR |
+|---|---|---|
+| Llama-3.2-3B (Phase 5 baseline) | 65.00% | **0.00%** |
+| Phi-3.5-mini-instruct | 60.00% | **0.00%** |
+| Mistral-7B-Instruct-v0.3 | **75.00%** | **0.00%** |
 
-**Key findings:**
-- **5B (role isolation):** Changing victim from open summariser to constrained binary classifier dropped ASR from 15% to **0.00%** across all 20 trials. Lexical bleed is a role architecture problem, not a model problem.  
-- **5A (trigger isolation):** Changing trigger from natural word (CONFIRMED) to impossible word (XRAY7) caused ASR to rise from 15% to **65.00%**. When forced to write explicit injections, the 70B attacker is significantly more effective — revealing genuine injection as a separate, more severe vulnerability.  
+### Key findings
+- **Role fix is universal:** Constraining victim to a binary classifier drops ASR to exactly 0% on all three models. This is a pipeline architecture fix, not a model fix.
+- **Genuine injection is architectural:** 60–75% ASR across three models from different companies with different training. Not a Llama bug — a general vulnerability of the RAG summariser pattern.
+- **Safety training does not transfer:** Phi-3.5-mini resisted DAN jailbreaks at 0% (Phase 1) but scored 60% on genuine RAG injection. Different attack surfaces require different defences.
+- **Mistral-7B is most vulnerable:** The most widely deployed open RAG model in enterprise showed the highest genuine injection ASR (75%).
 
-**Implication:**  
-RAG pipelines using open-ended summarisation are structurally more vulnerable than those using constrained output formats. These two vulnerability classes require different defences and should be measured separately.
-===========================================================================================================================================================================
+---
+
+## Prior Work and Attribution
+
+- **NVIDIA Garak:** Phases 1–3 probes (promptinject, latentinject, dan) adapted from Garak's probe library.
+- **MITRE ATLAS:** Technique mapping for all experiments.
+- **NIST AI 100-2e2025:** Formal AML taxonomy for all NISTAML ID mappings.
+- **OWASP LLM Top 10:** Practitioner-facing vulnerability classification.
+
+---
+
+## Ethical Use
+
+Defensive security research only. All experiments on open-source models in isolated environments. No production systems targeted. Use responsibly with human oversight only.
+
+---
+
 ## Roadmap
-- [x] Phases 1–3: Establish baselines using Garak probes (promptinject, DAN, latentinject)
-- [x] Phase 4: Agentic attack loop — 70B attacker vs 3B victim in RAG context
-- [x] Phase 5: Mechanistic isolation — prove lexical bleed vs genuine injection are separate classes
-- [ ] Phase 5 multi-model: Run same experiments on Phi-3.5-mini, Qwen-2-7B, Mistral-7B
-- [ ] Phase 6: Membership inference baselines (NISTAML.033)
+
+- [x] Phases 1–3: Garak-based baselines (promptinject, DAN, latentinject)
+- [x] Phase 4: Agentic attack loop — 70B attacker vs 3B victim
+- [x] Phase 5: Mechanistic isolation — lexical bleed vs genuine injection
+- [x] Phase 5 Multi-Model: Cross-model validation (Llama, Phi, Mistral)
+- [ ] Phase 6: Membership inference (NISTAML.033)
 - [ ] Phase 7: Model extraction (NISTAML.031)
 - [ ] Phase 8: EvasiveBench v0.1 + arXiv preprint
+
+---
 
 ## References
 
@@ -97,3 +99,5 @@ RAG pipelines using open-ended summarisation are structurally more vulnerable th
 - NVIDIA Garak: <https://github.com/NVIDIA/garak>
 - OWASP LLM Top 10: <https://owasp.org/www-project-top-10-for-large-language-model-applications>
 - EU AI Act (2024/1689): <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689>
+
+egal-content/EN/TXT/?uri=CELEX:32024R1689>
