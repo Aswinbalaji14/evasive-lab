@@ -1,0 +1,23 @@
+{
+  "phase": "Phase 6 - Membership Inference",
+  "nist_id": "NISTAML.033",
+  "atlas_id": "AML.T0024",
+  "dataset": "wine",
+  "n_shadow": 50,
+  "run_timestamp": "2026-04-10T12:28:42.057493+00:00",
+  "target_model": {
+    "train_acc": 1.0,
+    "test_acc": 0.9722,
+    "gap": 0.0278
+  },
+  "results": {
+    "yeom_loss_based": {
+      "asr": 0.6573,
+      "auc": 0.566
+    },
+    "shokri_shadow": {
+      "asr": 0.4775,
+      "auc": 0.5176
+    }
+  }
+}
