@@ -1,40 +1,61 @@
-# The Summarization Trap
+# The Summarization Trap: Quantifying Role-Based Vulnerabilities and Lexical Hijacking in RAG Pipelines
 
-**Full Title:** The Summarization Trap: Quantifying Role-Based Vulnerabilities and Lexical Hijacking in RAG Pipelines
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20363724.svg)](https://doi.org/10.5281/zenodo.20363724)
 
-**Author:** Aswinbalaji14 — Independent Researcher
+## Publication Details
 
-**Status:** Preprint — submission pending
+| Field | Details |
+|---|---|
+| **Title** | The Summarization Trap: Quantifying Role-Based Vulnerabilities and Lexical Hijacking in RAG Pipelines |
+| **Author** | Aswin Balaji (Independent Researcher) |
+| **Published** | May 24, 2026 |
+| **Version** | v1 |
+| **Type** | Preprint (Open Access) |
+| **Publisher** | Zenodo |
+| **DOI** | [10.5281/zenodo.20363724](https://doi.org/10.5281/zenodo.20363724) |
+| **License** | Creative Commons Attribution 4.0 International |
 
-**arXiv link:** *(will be added once live)*
+## Links
 
----
+- 📄 **Zenodo Record:** https://zenodo.org/records/20363724
+- 📥 **PDF Direct Download:** https://zenodo.org/records/20363724/files/evasive_lab_full_research.pdf
+- 💻 **GitHub Repository:** https://github.com/Aswinbalaji14/evasive-lab
 
 ## Abstract
 
-Retrieval-Augmented Generation (RAG) pipelines are increasingly deployed in enterprise AI applications, enabling language models to read and respond based on external documents. This paper presents a systematic experimental study of two distinct vulnerability classes in RAG summariser pipelines: **lexical bleed**, in which a model reproduces attacker-chosen vocabulary naturally present in a source document, and **genuine injection**, in which a model follows explicit adversarial instructions embedded within document content.
-
-We demonstrate that these classes are mechanistically separable, require different defences, and have been conflated by existing Attack Success Rate (ASR) metrics. Results across three models (Llama-3.2-3B, Phi-3.5-mini, Mistral-7B) show that a constrained output role eliminates lexical bleed entirely (0% ASR on all models) while genuine injection persists at 60–75% ASR regardless of model or safety training.
-
----
-
-## Key Finding
-
-| Vulnerability | ASR | Fix |
-|---|---|---|
-| Lexical Bleed | ~15% | Constrain output role |
-| Genuine Injection | 60–75% across 3 models | Instruction hierarchy + output filtering |
-
----
+Eight-phase adversarial ML study on LLM and RAG pipeline vulnerabilities. Covers prompt injection,
+agentic attacks, membership inference, and model extraction. Key findings: two distinct RAG
+vulnerability classes (genuine injection vs lexical bleed), role-based defence reducing ASR to 0%,
+and 100% model extraction fidelity at 100 queries. Mapped to NIST AI 100-2e2025, MITRE ATLAS,
+OWASP LLM Top 10.
 
 ## Citation
 
-*(arXiv citation will appear here once submitted)*
+### BibTeX
+```bibtex
+@misc{balaji2026summarization,
+  title        = {The Summarization Trap: Quantifying Role-Based Vulnerabilities
+                  and Lexical Hijacking in {RAG} Pipelines},
+  author       = {Aswin Balaji},
+  year         = {2026},
+  month        = may,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20363724},
+  url          = {https://doi.org/10.5281/zenodo.20363724},
+  note         = {Preprint, Version v1}
+}
+```
 
----
+### APA
+Aswin Balaji. (2026, May 24). *The Summarization Trap: Quantifying Role-Based Vulnerabilities
+and Lexical Hijacking in RAG Pipelines* (Version v1). Zenodo.
+https://doi.org/10.5281/zenodo.20363724
 
-## Related Files
+### IEEE
+A. Balaji, "The Summarization Trap: Quantifying Role-Based Vulnerabilities and Lexical Hijacking
+in RAG Pipelines," Zenodo, May 2026, doi: 10.5281/zenodo.20363724.
 
-- `Reports/` — per-phase research reports
-- `Evidences/` — raw JSON trial data
-- `Methodology/attack_loop.md` — experimental setup description
+## Keywords
+
+adversarial machine learning · RAG security · prompt injection · LLM security ·
+model extraction · membership inference · NIST AI 100-2e2025 · MITRE ATLAS · OWASP LLM Top 10
