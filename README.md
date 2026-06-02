@@ -37,6 +37,7 @@ Open-source red-teaming lab aligned with **NIST AI 100-2e2025** (Adversarial Mac
 | 2026-04-05 | Mistral-7B-Instruct-v0.3 (float16) | 5B-role-isolation | NISTAML.037 | AML.T0051 | LLM01 | TriggerList 0.00% | Multi-model Phase 5B. Delta vs Llama 5B (0.00%): +0.00% |
 | 2026-04-18 | MLP(128,64,32)-wine | model-extraction | NISTAML.031 | AML.T0030 | LLM10 | Best fidelity 100.00% at budget 100 (logistic_regression) | CRITICAL extraction risk. Target acc 96.30%. |
 | 2026-04-22 | MLP(128,64,32)-wine | evasivebench-v0.1 | NISTAML.031/.033 | AML.T0024/T0030 | LLM06/LLM10 | MI AUC 0.5273 / ME Fidelity 100.00% | Overall: CRITICAL. 2/4 attacks CRITICAL. |
+| **10** | **Trigger Transferability** | Payloads crafted on Llama successfully transfer to Phi-3.5 and Mistral-7B | 🔴 **CRITICAL** |
 
 ## ⚠️ Security Advisory: Llama-3.2-3B Jailbreak
 **Date:** 2026-01-01  
